@@ -1,0 +1,59 @@
+	!Quad Field Errors
+		eoption, add = true, seed := ii+2;
+		error_qua22 := tgauss(2) * (1e-4)/3;
+		select, flag=error, clear;
+		select, flag=error, class = quadrupole;
+		efcomp, order:=1, radius:=0.04,
+		dknr:={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+		!Vertical Bending
+		eoption, add = true, seed := ii+2;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = rbend;
+		efcomp, order:=0,radius:=0.04,
+		dknr:={error_qua22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+	! Bending MBHC (bh1, bh2)
+		eoption, add = true, seed := ii+2;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = bh1;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_qua22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+		eoption, add = true, seed := ii+2;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = bh2;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_qua22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+	! Bending MBG (mbs, b1, b1t)
+		eoption, add = true, seed := ii+2;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = mbs;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_qua22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+		eoption, add = true, seed := ii+2;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = b1;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_qua22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+		eoption, add = true, seed := ii+2;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = b1t;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_qua22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+	! Bending B190 (b12_new, b2_new)
+		eoption, add = true, seed := ii+2;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = b12_new;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_qua22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+		eoption, add = true, seed := ii+2;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = b2_new;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_qua22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};

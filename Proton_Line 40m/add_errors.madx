@@ -1,0 +1,133 @@
+use, sequence = TT40TT41;
+
+!===============================================
+!Static Errors
+!===============================================
+
+bend_error 	= 5e-3;		!field
+	b190_field	=6e-4;
+	mbg_field	= 2e-4;
+	mbhc_field  = 1e-4;
+
+bend_mis 	=0.1e-3;	!alignment (bend, kicker)
+bend_rot	= 0.001;	!rotation of dipoles around horizontal axis
+
+quad_error 	= 0.4e-3;	!field
+	qtg_field	= 3e-3;
+
+quad_mis 	= 0.1e-3;	!alignment
+
+bpm_error 	= 50e-6;	!reading
+
+kick_error 	= 4e-2;		!field
+
+
+
+!Dipole errors
+
+	!Vertical Bending
+		eoption, add = false, seed := ii+1;
+		error_mb := tgauss(2) * bend_error;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = rbend;
+		efcomp, order:=0,radius:=0.04,
+		dknr:={error_mb,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+	! Bending MBHC (bh1, bh2)
+		eoption, add = false, seed := ii+1;
+		error_mb := tgauss(2) * mbhc_field;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = bh1;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_mb,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+		eoption, add = false, seed := ii+1;
+		error_mb := tgauss(2) * mbhc_field;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = bh2;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_mb,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+	! Bending MBG (mbs, b1, b1t)
+		eoption, add = false, seed := ii+1;
+		error_mb := tgauss(2) * mbg_field;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = mbs;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_mb,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+		eoption, add = false, seed := ii+1;
+		error_mb := tgauss(2) * mbg_field;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = b1;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_mb,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+		eoption, add = false, seed := ii+1;
+		error_mb := tgauss(2) * mbg_field;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = b1t;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_mb,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+	! Bending B190 (b12_new, b2_new)
+		eoption, add = false, seed := ii+1;
+		error_mb := tgauss(2) * b190_field;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = b12_new;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_mb,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+		eoption, add = false, seed := ii+1;
+		error_mb := tgauss(2) * b190_field;
+		select, flag=ERROR, clear;
+		select, flag=ERROR, class = b2_new;
+		efcomp, order:=0,radius:=0.03,
+		dknr:={error_mb,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+	!Bend Alignment Errors
+		eoption, add=true, seed := ii+1;
+		Select, flag=ERROR, clear;
+		Select, flag=ERROR, class = rbend;
+		ealign, dx:=tgauss(2) * bend_mis, dy:=tgauss(2) * bend_mis, ds:=tgauss(2) * bend_mis, dphi=bend_rot;
+
+
+!Quad errors
+
+	!Quad Field Errors
+		eoption, add = true, seed := ii+1;
+		error_qua := tgauss(2) * qtg_field;
+		select, flag=error, clear;
+		select, flag=error, class = quadrupole;
+		efcomp, order:=1, radius:=0.04,
+		dknr:={0,error_qua,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+	!Quad Alignment Errors
+		eoption, add=true, seed := ii+1;
+		Select, flag=ERROR, clear;
+		Select, flag=ERROR, class = quadrupole;
+		ealign,
+		dx:=tgauss(2) * quad_mis,
+		dy:=tgauss(2) * quad_mis,
+		ds:=tgauss(2) * quad_mis;
+
+
+!BPM Errors
+		eoption, add=true, seed := ii;
+		Select, flag=ERROR, clear;
+		Select, flag=ERROR, class=monitor;
+		ealign,
+		mrex:= 2*bpm_error*tgauss(2),
+		mrey:= 2*bpm_error*tgauss(2);
+
+
+!Error Output
+
+	select, flag=error, clear;
+    	select, flag=error, class = quadrupole;
+    	select, flag=error, class= rbend;
+	esave;
+
+    select, flag = twiss, clear;
+    !savebeta, label=start_line, place=electron_line$start, sequence=TT40TT41Seq;
+

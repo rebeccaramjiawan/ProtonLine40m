@@ -1,0 +1,619 @@
+!============================================================
+!all magnet aperture is mechnical aperture minus 10mm
+!============================================================
+
+
+!dipoles
+	bh1: rbend ,l:= 5 ,aperture=ellipse ,aperture={0.130 ,0.03} ; 		!TT40 magnet
+	bh2: rbend ,l:= 3.412 ,aperture=ellipse ,aperture={0.230 ,0.04} ;  	!TT40 magnet
+	mbs: rbend ,l:= 3  ,aperture=ellipse ,aperture={0.157 ,0.056} ;		!MBS
+	b1: rbend ,l:= 6.3  ,aperture=ellipse ,aperture={0.140 ,0.037} ;		!MBG
+!	b11_new: rbend , l:=6.3  ,aperture=ellipse ,aperture={0.130 ,0.027} ;
+	b12_new: rbend , l:=1.9 ,aperture=ellipse ,aperture={0.24 ,0.052} ;	!B190
+	b2_new: rbend , l:=1.9 ,aperture=ellipse ,aperture={0.24 ,0.052} ;		!B190
+	b1t: rbend ,l:= 6.3 ,aperture=ellipse ,aperture={0.140 ,0.037} ;		!tilted MBG
+
+	l_bh1:= 5;
+	l_bh2:= 3.412;
+	l_mbs:= 3;
+	l_b1 := 6.3;
+	l_b11:= 6.3;
+	l_b12:= 1.9;
+	l_b2 := 1.9;
+	l_b1t:= 6.3;
+
+
+!quadrupoles
+	mqi1: quadrupole ,l:= 1.4 ,aperture=ellipse ,aperture={0.024 ,0.024} ;      !TT40 magnet
+
+	qtl2: quadrupole ,l:= 2.99 ,aperture=ellipse ,aperture={0.080 ,0.080} ;       !qtl
+	qtl3: quadrupole ,l:= 2.99 ,aperture=ellipse ,aperture={0.080 ,0.080} ;
+	qtl4: quadrupole ,l:= 2.99 ,aperture=ellipse ,aperture={0.080 ,0.080} ;
+	qtl5: quadrupole ,l:= 2.99 ,aperture=ellipse ,aperture={0.080 ,0.080} ;
+
+	qtn1: quadrupole ,l:= 2.2 ,aperture=ellipse ,aperture={0.045 ,0.045} ; 		!QTG
+
+	qtnd: quadrupole ,l:= 2.2 ,aperture=ellipse ,aperture={0.045 ,0.045} ;
+	qtnf: quadrupole ,l:= 2.2  ,aperture=ellipse ,aperture={0.045 ,0.045} ;
+
+	qtn5: quadrupole ,l:= 2.2,aperture=ellipse ,aperture={0.045 ,0.045} ;
+	qtn6: quadrupole ,l:= 2.2 ,aperture=ellipse ,aperture={0.045 ,0.045} ;
+	qtn7: quadrupole ,l:= 2.2 ,aperture=ellipse ,aperture={0.045 ,0.045} ;
+	qtn8: quadrupole ,l:= 2.2 ,aperture=ellipse ,aperture={0.045 ,0.045} ;
+
+	qtl9: 	quadrupole ,l:= 2.99,aperture=ellipse ,aperture={0.080 ,0.080} ;
+	qtl101: quadrupole ,l:= 2.99  ,aperture=ellipse ,aperture={0.080 ,0.080} ;
+	qtl111: quadrupole ,l:= 2.99,aperture=ellipse ,aperture={0.080 ,0.080} ;
+
+	qts111: quadrupole ,l:= 1.49 ,aperture=ellipse ,aperture={0.080 ,0.0807} ;		!QTS
+
+	l_mqi:= 1.4;
+	l_qtl:= 2.99;
+	l_qtn:= 2.2;
+	l_qts:= 1.49;
+
+
+!kickers
+
+	mdmv: vkicker ,l:= 0.508 ,aperture=ellipse ,aperture={0.022 ,0.050} ;      !TT40 magnet
+	mdmh: hkicker ,l:= 0.508 ,aperture=ellipse ,aperture={0.050 ,0.022} ;      !TT40 magnet
+	mdsv: vkicker ,l:= 0.7 ,aperture=ellipse ,aperture={0.069 ,0.200} ;
+	mdsh: hkicker ,l:= 0.7 ,aperture=ellipse ,aperture={0.130 ,0.069} ;
+	mdgv: vkicker ,l:= 0.548 ,aperture=ellipse ,aperture={0.040 ,0.085} ;
+	mdgh: hkicker ,l:= 0.548 ,aperture=ellipse ,aperture={0.085 ,0.040} ;
+
+	l_mdgh:= 0.548; !used in aperture scan
+	l_mdgv:= 0.548; !used in aperture scan
+
+!instrumentation
+	otr1: instrument ,l:= 0.45 ,aperture=ellipse ,aperture={0.03 ,0.03} ;
+	otr2: instrument ,l:= 0.35 ,aperture=ellipse ,aperture={0.03 ,0.03} ;
+	bfcti: instrument ,l:= 0.482 ,aperture=ellipse ,aperture={0.03 ,0.03} ;
+	bct4124: instrument ,l:= 0.483 ,aperture=ellipse ,aperture={0.03 ,0.03} ;
+
+/*	bpk: monitor ,l:= 0.45 ,aperture=ellipse ,aperture={0.11674 ,0.133} ;
+	bpg4101: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4102: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4104: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4105: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4107: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4108: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4110: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4111: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4113: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4114: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4116: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4117: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4119: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4120: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4122: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+	bpg4123: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+*/
+
+	bpk: monitor ,l:= 0.45 ,aperture=ellipse ,aperture={0.11674 ,0.133} ;
+	bpg4101: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4102: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4104: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4105: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4107: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4108: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4110: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4111: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4113: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4114: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4116: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4117: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4119: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4120: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4122: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg4123: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+
+	bpg412424: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpg412444: monitor ,l:= 0.248 ,aperture=RACETRACK ,aperture={0.012,0 ,0.030} ; !BPM with offset after laser.1
+	bpg412445: monitor ,l:= 0.248 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	bpm412425: monitor ,l:= 0.248 ,aperture=RACETRACK ,aperture={-0.002,0 ,0.030} ; !BPM with offset after laser.1
+//	bpkg412449: monitor ,l:= 0.3 ,aperture=ellipse ,aperture={0.061 ,0.0688} ;
+
+	otr4104:otr2 ;
+	otr4107:otr2 ;
+	otr4110:otr2 ;
+	otr4119:otr2 ;
+	otr4121:otr2 ;
+	otr412424: otr2 ;
+	otr412434: otr2 ;
+	otr412445: otr2 ;
+	target: monitor ,l:= 0 ;
+
+
+
+
+
+!secondary beam line elements
+	iris: instrument , l=0.001,aperture=ellipse ,aperture={0.005 ,0.005}  ;
+
+	plasmacell: instrument , l=10,aperture=ellipse ,aperture={0.020 ,0.020}  ;
+	table: instrument , l=2,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	MQNBR: instrument , l=0.285,aperture=ellipse ,aperture={0.030 ,0.030}  ;
+	MBXFB: instrument , l= 1,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	BTVSPS: instrument , l=0.448 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+	Shielding: instrument , l=0 ,aperture=ellipse ,aperture={0.030 ,0.030} ;
+
+
+! for error studies
+	VirtualKick: kicker, L:= 0;
+
+Beam, particle = proton, pc = 400.0,exn=3.5e-6, eyn=3.5e-6,
+sige=0.4e-3, NPART=2E11, BUNCHED;
+
+Z:=1;
+A:=1;
+DPP:=BEAM->SIGE*(BEAM->ENERGY/BEAM->PC)^2;
+
+
+!============================================================
+!elements
+!============================================================
+
+otr1: instrument ,l:= 0.45 ,aperture=ellipse ,aperture={0.06 ,0.06} ;
+otr2: instrument ,l:= 0.35 ,aperture=ellipse ,aperture={0.06 ,0.06} ;
+bfcti: instrument ,l:= 0.482 ,aperture=ellipse ,aperture={0.06 ,0.06} ;
+bct4124: instrument ,l:= 0.483 ,aperture=ellipse ,aperture={0.06 ,0.06} ;
+
+
+
+b11:=-7.99999e-03 ;
+
+b12:=-1.18226e-03 ;
+b2:= 1.18228e-03 ;
+
+
+mbsk:=-0.0031247 ;
+
+bh1k:= -0.004466 ;
+bh2k:=-0.003755 ;
+
+bh1: rbend ,l:= 5 ,angle:= bh1k ,aperture=ellipse ,aperture={0.130 ,0.03} ;
+bh2: rbend ,l:= 3.412 ,angle:= bh2k ,aperture=ellipse ,aperture={0.230 ,0.04} ;
+mbs: rbend ,l:= 3 ,angle:= mbsk ,aperture=ellipse ,aperture={0.147 ,0.046} ;
+b1: rbend ,l:= 6.3 ,angle:= -0.00799133 ,aperture=ellipse ,aperture={0.130 ,0.027} ;
+b11_new: rbend , l:=6.3 , angle:=b11 ,aperture=ellipse ,aperture={0.130 ,0.027} ;
+
+
+b12_new: rbend , l:=1.9 , angle:=b12 ,aperture=ellipse ,aperture={0.049 ,0.049} ;
+b2_new: rbend , l:=1.9 , angle:=b2 ,aperture=ellipse ,aperture={0.049 ,0.049} ;
+
+
+b1t: rbend ,l:= 6.3 ,angle:= -0.00799133 ,aperture=ellipse ,aperture={0.130 ,0.027} ;
+
+mqi1: quadrupole ,l:= 1.4 ,k1:= kmqi1 ,aperture=ellipse ,aperture={0.024 ,0.024} ;
+qtl2: quadrupole ,l:= 2.99 ,k1:= kqtl2 ,aperture=ellipse ,aperture={0.03 ,0.03} ;
+qtl3: quadrupole ,l:= 2.99 ,k1:= kqtl3 ,aperture=ellipse ,aperture={0.03 ,0.03} ;
+qtl4: quadrupole ,l:= 2.99 ,k1:= kqtl4 ,aperture=ellipse ,aperture={0.06 ,0.06} ;
+qtl5: quadrupole ,l:= 2.99 ,k1:= kqtl5 ,aperture=ellipse ,aperture={0.06 ,0.06} ;
+qtn1: quadrupole ,l:= 2.2 ,k1:= kqtn1 ,aperture=ellipse ,aperture={0.03375 ,0.03375} ;
+
+
+
+qtnd: quadrupole ,l:= 2.2 ,k1:= kqtnf ,aperture=ellipse ,aperture={0.03375 ,0.03375} ;
+qtnf: quadrupole ,l:= 2.2 ,k1:= kqtnd ,aperture=ellipse ,aperture={0.03375 ,0.03375} ;
+
+
+qtn5: quadrupole ,l:= 2.2 ,k1:= kqtn5 ,aperture=ellipse ,aperture={0.03375 ,0.03375} ;
+qtn6: quadrupole ,l:= 2.2 ,k1:= kqtn6 ,aperture=ellipse ,aperture={0.03375 ,0.03375} ;
+qtn7: quadrupole ,l:= 2.2 ,k1:= kqtn7 ,aperture=ellipse ,aperture={0.03375 ,0.03375} ;
+qtn8: quadrupole ,l:= 2.2 ,k1:= kqtn8 ,aperture=ellipse ,aperture={0.03375 ,0.03375} ;
+qtn9: quadrupole ,l:= 2.2 ,k1:= kqtn9 ,aperture=ellipse ,aperture={0.03375 ,0.03375} ;
+
+qtl9: 	quadrupole ,l:= 2.99 ,k1:= kqtl9 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+qtl10: 	quadrupole ,l:= 2.99 ,k1:= kqtl10 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+qtl101: quadrupole ,l:= 2.99 ,k1:= kqtl101 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+qts10: 	quadrupole ,l:= 1.49 ,k1:= kqtl10 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+qtl11: 	quadrupole ,l:= 2.99 ,k1:= kqtl11 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+qtl111: quadrupole ,l:= 2.99 ,k1:= kqtl111 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+
+
+qts111: quadrupole ,l:= 1.49 ,k1:= kqtl111 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+
+!not used
+!qtl12: quadrupole ,l:= 2.99 ,k1:= kqtl12 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+!qts12: quadrupole ,l:= 1.49 ,k1:= kqtl12 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+
+
+
+bpk: monitor ,l:= 0.45 ,aperture=ellipse ,aperture={0.11674 ,0.133} ;
+bpg4101: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4102: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4104: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4105: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4107: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4108: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4110: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4111: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4113: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4114: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4116: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4117: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4119: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4120: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4122: hmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg4123: vmonitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+
+bpg412424: monitor ,l:= 0.25 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg412444: monitor ,l:= 0.248 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpg412445: monitor ,l:= 0.248 ,aperture=ellipse ,aperture={0.060 ,0.060} ;
+bpkg412449: monitor ,l:= 0.3 ,aperture=ellipse ,aperture={0.061 ,0.0688} ;
+
+otr4104:otr2 ;
+otr4107:otr2 ;
+otr4110:otr2 ;
+otr4119:otr2 ;
+otr4121:otr2 ;
+otr412424: otr2 ;
+otr412434: otr2 ;
+otr412445: otr2 ;
+target: monitor ,l:= 0 ;
+
+
+
+plasmacell: monitor , l=10 ;
+table: monitor , l=2 ;
+MQNBR: monitor , l=0.285 ;
+MBXFB: monitor , l= 1 ;
+BTVSPS: monitor , l=0.448 ;
+Shielding: monitor , l=0 ;
+
+
+
+mkdp: marker ;
+
+mdmv: vkicker ,l:= 0.508 ,aperture=ellipse ,aperture={0.022 ,0.050} ;
+mdmh: hkicker ,l:= 0.508 ,aperture=ellipse ,aperture={0.050 ,0.022} ;
+mdsv: vkicker ,l:= 0.7 ,aperture=ellipse ,aperture={0.059 ,0.190} ;
+mdsh: hkicker ,l:= 0.7 ,aperture=ellipse ,aperture={0.120 ,0.059} ;
+mdgv: vkicker ,l:= 0.548 ,aperture=ellipse ,aperture={0.030 ,0.075} ;
+mdgh: hkicker ,l:= 0.548 ,aperture=ellipse ,aperture={0.075 ,0.030} ;
+
+
+mdgh4102: mdgh ,kick:= amdgh4102 ;
+mdgv4103: mdgv ,kick:= amdgv4103 ;
+mdgv4105: mdgv ,kick:= amdgv4105 ;
+mdgh4106: mdgh ,kick:= amdgh4106 ;
+mdgh4108: mdgh ,kick:= amdgh4108 ;
+mdgv4109: mdgv ,kick:= amdgv4109 ;
+mdgv4111: mdgv ,kick:= amdgv4111 ;
+mdgh4112: mdgh ,kick:= amdgh4112 ;
+mdgh4114: mdgh ,kick:= amdgh4114 ;
+mdgv4115: mdgv ,kick:= amdgv4115 ;
+mdgv4117: mdgv ,kick:= amdgv4117 ;
+mdgh4118: mdgh ,kick:= amdgh4118 ;
+mdsv4121: mdsv ,kick:= amdsv4121 ;
+mdsh4122: mdsh ,kick:= amdsh4122 ;
+mdsv4124: mdsv ,kick:= amdsv4124 ;
+mdsh4124: mdsh ,kick:= amdsh4124 ;
+
+
+!=========================
+
+
+t1=-0.0171710 ;
+t2=-0.0171710 ;
+t3=-0.0171710 ;
+t4=-0.0171710 ;
+
+!=========================
+
+!correction is used to shift the point S0 between the extraction point (for optics calculations)
+! and for Geode, where it is set in the centre of the Quadrupole (QDA.41910) upstream of the extraction point
+! => for detailed view see CDD drawing spslnins0030-vAH
+
+corr:= 1.895499999955; 		!use for optics calculation and layout database
+!corr:=0;			!use for survey (Geode)
+
+merge:= -0.1;		!Position of focal point from start of hot plasma cell; range=-1 to 1.5
+!=========================
+
+
+tt40tt41_original: sequence , l = 880.;
+!=========================
+!Start	of	Sequence
+
+
+!pt.4:		marker	, 	at= 	0.00000		;	!remove for optics calculation and layout database
+pt.extraction: 	marker	, 	at=	1.895499999955-corr		;
+mdmv.400097:	mdmv	,	at=	3.706000000-corr	;
+
+bpk.400099:	bpk	,	at=	4.305	-corr	;
+qtmd.400100:	mqi1	,	at=	5.5	-corr	;
+mdmh.400104:	mdmh	,	at=	6.674	-corr	;
+btv.400105:	otr1	,	at=	7.273	-corr	;
+
+mbhc.400107:	bh1	,	at=	10.50000208	-corr	,	tilt:=	0.0000005	;
+mbhc.400118:	bh1	,	at=	16.00000623	-corr	,	tilt:=	0.0000015	;
+mbhc.400129:	bh1	,	at=	21.50001039	-corr	,	tilt:=	0.000002	;
+qtrf.400200:	qtl2	,	at=	28.25201247	-corr	;
+bpk.400207:	bpk	,	at=	30.47501247	-corr	;
+btv.400222:	otr1	,	at=	37.92501247	-corr	;
+
+mdsv.400293:	mdsv	,	at=	73.15901247	-corr	;
+qtrd.400300:	qtl3	,	at=	75.55201247	-corr	;
+bpk.400307:	bpk	,	at=	77.77501247	-corr	;
+mbha.400309:	bh2	,	at=	80.22101347	-corr	,	tilt:=	0.0000025	;
+mbha.400318:	bh2	,	at=	84.33301547	-corr	,	tilt:=	0.0000035	;
+mbha.400326:	bh2	,	at=	88.44501748	-corr	,	tilt:=	4.00035E-06	;
+mbha.400334:	bh2	,	at=	92.55701948	-corr	,	tilt:=	4.49995E-06	;
+btv.400343:	otr1	,	at=	95.43102048	-corr	;
+BCTFI.400344:	bfcti	,	at=	96.01002048	-corr	;
+qtlf.400400:	qtl4	,	at=	110.1580205	-corr	;
+bpk.400407:	bpk	,	at=	112.2680205	-corr	;
+
+!Start TT41
+
+mbsg.410010:	mbs	,	at=	114.8680211	-corr	,	tilt:=	0.0000055	;
+mbsg.410017:	mbs	,	at=	118.5080223	-corr	,	tilt:=	0.000006	;
+mbsg.410024:	mbs	,	at=	122.1480235	-corr	,	tilt:=	0.0000065	;
+mbsg.410049:	mbs	,	at=	134.6110248	-corr	,	tilt:=	0.000007	;
+mbsg.410057:	mbs	,	at=	138.251026	-corr	,	tilt:=	7.49975E-06	;
+mbsg.410064:	mbs	,	at=	141.8910272	-corr	,	tilt:=	0.000008	;
+mbsg.410071:	mbs	,	at=	145.5310284	-corr	,	tilt:=	0.0000085	;
+mbsg.410079:	mbs	,	at=	149.1710296	-corr	,	tilt:=	9.50015E-06	;
+qtld.410100:	qtl5	,	at=	152.7160302	-corr	;
+bpm.410107:	bpg4101	,	at=	154.7260302	-corr	;
+mbg.410147:	b1,	at=	177.7780386	-corr	,	tilt:=	1.05E-05	;
+mbg.410161:	b1	,	at=	184.6480554	-corr	,	tilt:=	1.15005E-05	;
+qtgf.410200:	qtn1	,	at=	189.3930638	-corr	;
+bpm.410205:	bpg4102	,	at=	190.7780638	-corr	;
+mdgh.410206:	mdgh4102	,	at=	191.2570638	-corr	;
+mbg.410208:	b1	,	at=	195.3380722	-corr	,	tilt:=	1.3E-05	;
+mbg.410222:	b1	,	at=	202.2080889	-corr	,	tilt:=	1.45005E-05	;
+mbg.410236:	b1	,	at=	209.0781057	-corr	,	tilt:=	1.6E-05	;
+mbg.410250:	b1	,	at=	215.9481224	-corr	,	tilt:=	1.75005E-05	;
+
+qtgd.410300:	qtnd	,	at=	220.6931308	-corr	;
+mdgv.410306:	mdgv4103	,	at=	222.5571308	-corr	;
+mbg.410308:	b1	,	at=	226.6381392	-corr	,	tilt:=	1.85011E-05	;
+mbg.410322:	b1	,	at=	233.508156	-corr	,	tilt:=	2.00006E-05	;
+mbg.410336:	b1	,	at=	240.3781727	-corr	,	tilt:=	2.15011E-05	;
+mbg.410350:	b1	,	at=	247.2481895	-corr	,	tilt:=	2.30016E-05	;
+qtgf.410400:	qtnf	,	at=	251.9931979	-corr	;
+bpm.410405:	bpg4104	,	at=	253.3781979	-corr	;
+btv.410406:	otr4104	,	at=	253.7581979	-corr	;
+mbg.410408:	b1	,	at=	257.9382063	-corr	,	tilt:=	2.45022E-05	;
+mbg.410422:	b1	,	at=	264.808223	-corr	,	tilt:=	2.60017E-05	;
+mbg.410436:	b1	,	at=	271.6782398	-corr	,	tilt:=	2.75022E-05	;
+mbg.410450:	b1	,	at=	278.5482566	-corr	,	tilt:=	2.85028E-05	;
+
+
+qtgd.410500:	qtnd	,	at=	283.2932649	-corr	;
+bpm.410505:	bpg4105	,	at=	284.6782649	-corr	;
+mdgv.410506:	mdgv4105	,	at=	285.1572649	-corr	;
+mbg.410508:	b1	,	at=	289.2382733	-corr	,	tilt:=	3.00033E-05	;
+mbg.410522:	b1	,	at=	296.1082901	-corr	,	tilt:=	3.15038E-05	;
+mbg.410536:	b1	,	at=	302.9783068	-corr	,	tilt:=	3.30043E-05	;
+mbg.410550:	b1	,	at=	309.8483236	-corr	,	tilt:=	3.45049E-05	;
+qtgf.410600:	qtnf	,	at=	314.593332	-corr	;
+mdgh.410606:	mdgh4106	,	at=	316.457332	-corr	;
+mbgt.410608:	b1t	,	at=	320.5383404	-corr	,	tilt:=	-0.224002439	;
+mbgt.410622:	b1t	,	at=	327.4083571	-corr	,	tilt:=	-0.224007438	;
+mbgt.410636:	b1t	,	at=	334.2783739	-corr	,	tilt:=	-0.224027438	;
+mbgt.410650:	b1t	,	at=	341.1483907	-corr	,	tilt:=	-0.224060439	;
+qtgd.410700:	qtnd	,	at=	345.893399	-corr	;
+bpm.410705:	bpg4107	,	at=	347.278399	-corr	;
+btv.410706:	otr4107	,	at=	347.658399	-corr	;
+mbgt.410708:	b1t	,	at=	351.8384074	-corr	,	tilt:=	-0.22410744	;
+mbgt.410722:	b1t	,	at=	358.7084242	-corr	,	tilt:=	-0.224168444	;
+mbgt.410736:	b1t	,	at=	365.578441	-corr	,	tilt:=	-0.224243452	;
+mbgt.410750:	b1t	,	at=	372.4484577	-corr	,	tilt:=	-0.224331464	;
+qtgf.410800:	qtnf	,	at=	377.1934661	-corr	;
+bpm.410805:	bpg4108	,	at=	378.5784661	-corr	;
+mdgh.410806:	mdgh4108	,	at=	379.0574661	-corr	;
+mbgt.410808:	b1t	,	at=	383.1384745	-corr	,	tilt:=	-0.224433481	;
+mbgt.410822:	b1t	,	at=	390.0084912	-corr	,	tilt:=	-0.224550503	;
+mbgt.410836:	b1t	,	at=	396.878508	-corr	,	tilt:=	-0.224680509	;
+mbgt.410850:	b1t	,	at=	403.7485248	-corr	,	tilt:=	-0.224824498	;
+qtgd.410900:	qtnd	,	at=	408.4935332	-corr	;
+
+mdgv.410906:	mdgv4109	,	at=	410.3575332	-corr	;
+mbgt.410908:	b1t	,	at=	414.4385415	-corr	,	tilt:=	-0.224981473	;
+mbgt.410922:	b1t	,	at=	421.3085583	-corr	,	tilt:=	-0.225153435	;
+mbgt.410936:	b1t	,	at=	428.1785751	-corr	,	tilt:=	-0.225338382	;
+mbgt.410950:	b1t	,	at=	435.0485918	-corr	,	tilt:=	-0.225537443	;
+qtgf.411000:	qtnf	,	at=	439.7936002	-corr	;
+bpm.411005:	bpg4110	,	at=	441.1786002	-corr	;
+btv.411006:	otr4110	,	at=	441.5586002	-corr	;
+mbgt.411008:	b1t	,	at=	445.7386086	-corr	,	tilt:=	-0.225750443	;
+mbgt.411022:	b1t	,	at=	452.6086254	-corr	,	tilt:=	-0.225977443	;
+mbgt.411036:	b1t	,	at=	459.4786421	-corr	,	tilt:=	-0.226218443	;
+mbgt.411050:	b1t	,	at=	466.3486589	-corr	,	tilt:=	-0.226473443	;
+qtgd.411100:	qtnd	,	at=	471.0936673	-corr	;
+bpm.411105:	bpg4111	,	at=	472.4786673	-corr	;
+mdgv.411106:	mdgv4111	,	at=	472.9576673	-corr	;
+mbgt.411108:	b1t	,	at=	477.0386756	-corr	,	tilt:=	-0.226741443	;
+mbgt.411122:	b1t	,	at=	483.9086924	-corr	,	tilt:=	-0.227023442	;
+mbgt.411136:	b1t	,	at=	490.7787092	-corr	,	tilt:=	-0.227319443	;
+mbgt.411150:	b1t	,	at=	497.6487259	-corr	,	tilt:=	-0.227629443	;
+
+qtgf.411200:	qtnf	,	at=	502.3937343	-corr	;
+mdgh.411206:	mdgh4112	,	at=	504.2577343	-corr	;
+mbgt.411208:	b1t	,	at=	508.3387427	-corr	,	tilt:=	-0.227953442	;
+mbgt.411222:	b1t	,	at=	515.2087595	-corr	,	tilt:=	-0.228291442	;
+mbgt.411236:	b1t	,	at=	522.0787762	-corr	,	tilt:=	-0.228642442	;
+mbgt.411250:	b1t	,	at=	528.948793	-corr	,	tilt:=	-0.229007441	;
+qtgd.411300:	qtnd	,	at=	533.6938014	-corr	;
+bpm.411305:	bpg4113	,	at=	535.0788014	-corr	;
+mbgt.411308:	b1t	,	at=	539.6388098	-corr	,	tilt:=	-0.229387441	;
+mbgt.411322:	b1t	,	at=	546.5088265	-corr	,	tilt:=	-0.229780441	;
+mbgt.411336:	b1t	,	at=	553.3788433	-corr	,	tilt:=	-0.23018744	;
+mbgt.411350:	b1t	,	at=	560.2488601	-corr	,	tilt:=	-0.230607439	;
+qtgf.411400:	qtnf	,	at=	564.9938684	-corr	;
+bpm.411405:	bpg4114	,	at=	566.3788684	-corr	;
+mdgh.411406:	mdgh4114	,	at=	566.8578684	-corr	;
+mbg.411408:	b1	,	at=	570.9388768	-corr	,	tilt:=	-0.007231494	;
+mbg.411422:	b1	,	at=	577.8088936	-corr	,	tilt:=	-0.007684493	;
+mbg.411436:	b1	,	at=	584.6789103	-corr	,	tilt:=	-0.008137491	;
+mbg.411450:	b1	,	at=	591.5489271	-corr	,	tilt:=	-0.00858999	;
+qtgd.411500:	qtnd	,	at=	596.2939355	-corr	;
+mdgv.411506:	mdgv4115	,	at=	598.1579355	-corr	;
+mbg.411508:	b1	,	at=	602.2389439	-corr	,	tilt:=	-0.009042489	;
+mbg.411522:	b1	,	at=	609.1089606	-corr	,	tilt:=	-0.009495486	;
+mbg.411536:	b1	,	at=	615.9789774	-corr	,	tilt:=	-0.009948485	;
+mbg.411550:	b1	,	at=	622.8489942	-corr	,	tilt:=	-0.010401483	;
+qtgf.411600:	qtnf	,	at=	627.5940025	-corr	;
+bpm.411605:	bpg4116	,	at=	628.9790025	-corr	;
+mbg.411608:	b1	,	at=	633.5390109	-corr	,	tilt:=	-0.010854481	;
+mbg.411622:	b1	,	at=	640.4090277	-corr	,	tilt:=	-0.011307478	;
+mbg.411636:	b1	,	at=	647.2790445	-corr	,	tilt:=	-0.011759976	;
+
+qtgd.411700:	qtn5	,	at=	652.0240528	-corr	;
+bpm.411705:	bpg4117	,	at=	653.4090528	-corr	;
+mdgv.411706:	mdgv4117	,	at=	653.8880528	-corr	;
+mbg.411708:	b1	,	at=	657.9690612	-corr	,	tilt:=	-0.012212474	;
+mbg.411722:	b1	,	at=	664.839078	-corr	,	tilt:=	-0.012665471	;
+mbg.411736:	b1	,	at=	671.7090947	-corr	,	tilt:=	-0.013118468	;
+qtgf.411800:	qtn6	,	at=	676.4541031	-corr	;
+mdgh.411806:	mdgh4118	,	at=	678.3181031	-corr	;
+mbg.411808:	b1	,	at=	682.3991115	-corr	,	tilt:=	-0.013571465	;
+mbg.411822:	b1	,	at=	689.2691283	-corr	,	tilt:=	-0.014024462	;
+mbg.411836:	b1	,	at=	696.139145	-corr	,	tilt:=	-0.014477459	;
+qtgf.411900:	qtn7	,	at=	700.8841534	-corr	;
+bpm.411905:	bpg4119	,	at=	702.2691534	-corr	;
+btv.411906:	otr4119	,	at=	702.6491534	-corr	;
+mbg.411908:	b1	,	at=	706.8291618	-corr	,	tilt:=	-0.014929955	;
+mbg.411922:	b1	,	at=	713.6991786	-corr	,	tilt:=	-0.015382453	;
+mbg.411936:	b1	,	at=	720.5691953	-corr	,	tilt:=	-0.015835449	;
+qtgf.412000:	qtn8	,	at=	725.3142037	-corr	;
+bpm.412005:	bpg4120	,	at=	726.6992037	-corr	;
+mbg.412008:	b1	,	at=	731.2592121	-corr	,	tilt:=	-0.016288446	;
+
+
+mbg.412022:	b1	,	at=	738.1292289	-corr	,	tilt:=	-0.016741442	;	!last CNGS original element
+btv.412035:	otr4121	,	at=	741.8012	-corr	;
+
+qtld.412100:	qtl9	,	at=	745.744254	-corr	;
+qtld.412108:	qtl9	,	at=	749.297254	-corr	;
+
+mbg.412115:	b1	,	at=	754.838254	-corr	,	tilt:=	-0.017194439	;
+
+bpm.412128:	bpg4122	,	at=	758.4613	-corr	;
+
+MBHFD.412133:	b12_new	,	at=	761.344254	-corr	,	tilt:=	0	;
+MBHFD.412141:	b12_new	,	at=	765.344254	-corr	,	tilt:=	0	;
+
+mdsh.412147:	mdsh4122	,	at=	767.7525	-corr	;
+
+qtlf.412200:	qtl101	,	at=	770.1455	-corr	;
+
+qtlf.412208:	qtl101	,	at=	773.6985	-corr	;
+qtlf.412215:	qtl101	,	at=	777.2515	-corr	;
+bpm.412221:	bpg4123	,	at=	779.2525	-corr	;
+
+mdsv.412223:	mdsv4121	,	at=	780.4625	-corr	;
+
+qtsd.412300:	qts111	,	at=	782.1055	-corr	;
+window.2:	marker	,	at=	783.132	-corr	;
+qtld.412305:	qtl111	,	at=	784.9655	-corr	;
+
+
+bpm.412311:	bpg4123	,	at=	786.9665	-corr	;
+
+laser.1:	marker	,	at=	787.4655	-corr	;
+
+bpm.412319:	bpg412424	,	at=	790.7955	-corr	;
+
+MBHFD.412324:	b2_new	,	at=	794.2457	-corr	,	tilt:=	0	;
+MBHFD.412330:	b2_new	,	at=	797.0025	-corr	,	tilt:=	0	;
+
+MDSV.412335:	mdsv4124	,	at=	798.9965	-corr	;
+MDSH.412338:	mdsh4124	,	at=	800.3015	-corr	;
+
+BPM.412339:	bpg412444	,	at=	801.1425	-corr	;
+BCTF.412340:	bct4124	,	at=	801.638	-corr	;
+
+BTV.412350:	otr412434	,	at=	-8.05	,	FROM=PLASMA.412402	;
+
+
+bpm.412352:	bpg412445	,	at=	-0.383	,	FROM=btv.412353	;
+btv.412353:	otr412434	,	at=	-6.572	,	FROM=PLASMA.412402	;
+
+plasma.e:	marker		,	at=	808.3955	-corr	;			!add for OP
+iris1:		marker		,	at=	809.3955-0.15	-corr	;
+plasma_merge:	marker		,	at=	809.3955	+merge	-corr	;
+PLASMA.412402:	plasmacell	,	at=	814.3955	-corr	;
+iris2:		marker		, 	at=	809.3955+10+0.15	-corr	;
+plasma.s:	marker		,	at=	820.3955	-corr	;			!add for OP
+
+bpm.412425:	bpg412445	,	at=	6.593	,	FROM=plasma.412402	;
+btv.412426:	otr412434	,	at=	0.383	,	FROM=bpm.412425	;
+
+Table.1:	table	,	at=	8.288	,		FROM=plasma.412402	;
+
+MQNBR.412432:	MQNBR	,	at=	1.4875	,		FROM=table.1	;		!2ndary beam line phase 2
+MQNBR.412433:	MQNBR	,	at=	0.495	,		FROM=MQNBR.412432	;	!2ndary beam line phase 2
+MBXFB.412435:	MBXFB	,	at=	1.6475	,		From=MQNBR.412433	;	!2ndary beam line phase 2
+plasma_merge_2:	marker		,	at=	809.3955	+merge	-corr	+40;
+plasma.s_2:	marker		,	at=	820.3955	-corr	+40;			!add for OP
+!btv.412442:	BTVSPS	,	at=	3.1474	,		FROM=MBXFB.412435	;
+
+!Shield.1:	shielding	,	at=	831.3955	-corr	;
+!T.40:		marker		,	at=	839.4016039	-corr	;
+
+endsequence ;
+
+
+
+kmqi1 = -2.88350e-02 ;
+kqtl2 =  1.38326e-02 ;
+kqtl3 = -1.19281e-02 ;
+kqtl4 =  1.32992e-02 ;
+kqtl5 = -1.46172e-02 ;
+
+kqtn1  =  2.09907e-02 ;
+
+kqtn5 = -1.98781e-02;
+kqtn6 =  1.95246e-02;
+kqtn7 =  1.92145e-03;
+kqtn8 = 9.38359e-03;
+kqtl9 = -8.22899e-03;
+kqtl101 = 9.32468e-03;
+kqtl111 = -1.20715e-02;
+
+
+kqtnf=-0.02086616618 ;
+kqtnd= 0.02019061088 ;
+
+use, sequence= "tt40tt41_original";
+
+!calculate spotsize and envelope
+
+DeltaP = 0.00035;
+emitta = 8.21e-9;
+orbitError = 0.002; ![mm]
+alignmentError = 0.003; ![mm]
+
+!Spot Size [mm] for DeltaP = 0.00035, emitta = 8.21e-9
+	sigma_x := 1e3*(sqrt(table(twiss, betx)*emitta) + abs(table(twiss,dx))*DeltaP);
+	sigma_y := 1e3* (sqrt(table(twiss, bety)*emitta) + abs(table(twiss,dy))* DeltaP);
+
+
+x_max = table(summ, betxmax);
+y_max = table(summ, betymax);
+
+!Envelope [mm] for DeltaP = 0.00035, 3 mm misalignment, 2 mm orbit error, emitta = 8.21e-9
+	env_x  := 1e3*(6*sqrt(emitta*1.2*table(twiss,betx))+abs(table(twiss,dx))* DeltaP +alignmentError+orbitError*sqrt(table(twiss,betx)/x_max));
+	env_y  := 1e3*(6*sqrt(emitta*1.2*table(twiss,bety))+abs(table(twiss,dy))* DeltaP +alignmentError+ orbitError*sqrt(table(twiss,bety)/y_max));
+	envm_x := -1e3*(6*sqrt(emitta*1.2*table(twiss,betx))+abs(table(twiss,dx))* DeltaP +alignmentError+ orbitError*sqrt(table(twiss,betx)/x_max));
+	envm_y := -1e3*(6*sqrt(emitta*1.2*table(twiss,bety))+abs(table(twiss,dy))* DeltaP +alignmentError+ orbitError*sqrt(table(twiss,bety)/y_max));
+
+!Element apertures [mm]
+	ap1mm := 1e3*(table(twiss,aper_1));
+	ap2mm := 1e3*(table(twiss,aper_2));
+
+
+!Q20 optics
+Select,flag=twiss,
+column = name,keyword,s,L,aper_1,aper_2,tilt,angle,k1l,x,y,betx,bety,dx,dy,px,py,alfx,alfy,dpx,dpy,mux,muy,sigma_x,sigma_y,env_x,env_y,ap1mm,ap2mm;
+
+TWISS,file='TT40TT41_Twiss2.out',
+centre,
+DELTAP=0,BETX= 27.931086,ALFX= 0.650549,DX= -0.557259,DPX= 0.013567,
+                 BETY=120.056512,ALFY=-2.705071,DY= 0.0,DPY= 0.0,
+                 x=0.00,px=0.00,y=0.0,py=0.0;
