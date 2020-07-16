@@ -487,7 +487,7 @@ mbg.412008:	b1	,	at=	731.2592121	-corr	,	tilt:=	-0.016288446	;
 
 
 mbg.412022:	b1	,	at=	738.1292289	-corr	,	tilt:=	-0.016741442	;	!last CNGS original element
-btv.412035:	otr4121	,	at=	741.8012	-corr	;
+btv.412035:	otr4121	,	at=	741.8012	-corr+12	;
 
 qtld.412100:	qtl9	,	at=	745.744254	-corr +12	;
 qtld.412108:	qtl9	,	at=	749.297254	-corr +12	;
@@ -498,7 +498,7 @@ qtld.412108:	qtl9	,	at=	749.297254	-corr +12	;
 
 mbg.412115:	b1	,	at=	754.838254	-corr + 12.5	,	tilt:=	-0.017194439	;
 
-!bpm.412128:	bpg4122	,	at=	758.4613	-corr +20;
+bpm.412128:	bpg4122	,	at=	758.4613	-corr +20;
 
 MBHFD.412133:	b12_new	,	at=	761.344254	-corr	+20,	tilt:=	0	;
 MBHFD.412141:	b12_new	,	at=	765.344254	-corr	+20,	tilt:=	0	;
@@ -523,20 +523,20 @@ qtlf.412200:	qtl101	,	at=	770.1455	-corr	+28.5;
 
 qtlf.412208:	qtl101	,	at=	773.6985	-corr	+28.5;
 qtlf.412215:	qtl101	,	at=	777.2515	-corr	+28.5;
-!bpm.412221:	bpg4123	,	at=	779.2525	-corr	+30;
+bpm.412221:	bpg4123	,	at=	779.2525	-corr	+30;
 
-!mdsv.412223:	mdsv4121	,	at=	780.4625	-corr	+45;
+mdsv.412223:	mdsv4121	,	at=	780.4625	-corr	+30;
 
 qtsd.412300:	qts111	,	at=	782.1055	-corr	+31.5;
 !window.2:	marker	,	at=	783.132	-corr	+45;
 qtld.412305:	qtl111	,	at=	784.9655	-corr	+31.5;
 
 
-!bpm.412311:	bpg4123	,	at=	786.9665	-corr	+40;
+bpm.412311:	bpg4123	,	at=	786.9665	-corr	+40;
 
 laser.1:	marker	,	at=	787.4655	-corr	+40;
 
-!bpm.412319:	bpg412424	,	at=	790.7955	-corr	+40;
+bpm.412319:	bpg412424	,	at=	790.7955	-corr	+40;
 
 MBHFD.412324:	b2_new	,	at=	794.2457	-corr	+40,	tilt:=	0	;
 MBHFD.412330:	b2_new	,	at=	797.0025	-corr	+40,	tilt:=	0	;
@@ -544,14 +544,15 @@ MBHFD.412330:	b2_new	,	at=	797.0025	-corr	+40,	tilt:=	0	;
 MDSV.412335:	mdsv4124	,	at=	798.9965	-corr	+40;
 MDSH.412338:	mdsh4124	,	at=	800.3015	-corr	+40;
 
-!BPM.412339:	bpg412444	,	at=	801.1425	-corr	+40;
-!BCTF.412340:	bct4124	,	at=	801.638	-corr	+40;
+BPM.412339:	bpg412444	,	at=	801.1425	-corr	+40;
+BCTF.412340:	bct4124	,	at=	801.638	-corr	+40;
 
-!BTV.412350:	otr412434	,	at=	-8.05	,	FROM=PLASMA.412402	;
+BTV.412350:	otr412434	,	at=	-8.05	,	FROM=PLASMA.412402	;
 
 
-!bpm.412352:	bpg412445	,	at=	-0.383	,	FROM=btv.412353	;
-!btv.412353:	otr412434	,	at=	-6.572	,	FROM=PLASMA.412402	;
+bpm.412352:	bpg412445	,	at=	-0.383	,	FROM=btv.412353	;
+!bpm.412352:	marker	,	at=	-0.383	,	FROM=btv.412353	;
+btv.412353:	otr412434	,	at=	-6.572	,	FROM=PLASMA.412402	;
 
 plasma.e:	marker		,	at=	808.3955	-corr +40	;			!add for OP
 !iris1:		marker		,	at=	809.3955-0.15	-corr +23	;
@@ -560,10 +561,11 @@ PLASMA.412402:	plasmacell	,	at=	814.3955	-corr	+40;
 iris2:		marker		, 	at=	809.3955+10+0.15	-corr	+40;
 plasma.s:	marker		,	at=	820.3955	-corr	+40;			!add for OP
 
-bpm.412425:	bpg412445	,	at=	6.593	,	FROM=plasma.412402	;
+bpm.412425:	bpg412445	,	at=	10+6.593	,	FROM=plasma.412402	;
+!bpm.412425:	marker	,	at=	6.593	,	FROM=plasma.412402	;
 btv.412426:	otr412434	,	at=	0.383	,	FROM=bpm.412425	;
 
-Table.1:	table	,	at=	8.288	,		FROM=plasma.412402	;
+Table.1:	table	,	at=	10+8.288	,		FROM=plasma.412402	;
 
 MQNBR.412432:	MQNBR	,	at=	1.4875	,		FROM=table.1	;		!2ndary beam line phase 2
 MQNBR.412433:	MQNBR	,	at=	0.495	,		FROM=MQNBR.412432	;	!2ndary beam line phase 2
@@ -571,8 +573,8 @@ MBXFB.412435:	MBXFB	,	at=	1.6475	,		From=MQNBR.412433	;	!2ndary beam line phase 
 
 btv.412442:	BTVSPS	,	at=	3.1474	,		FROM=MBXFB.412435	;
 
-Shield.1:	shielding	,	at=	831.3955	-corr+40	;
-T.40:		marker		,	at=	839.4016039	-corr+40	;
+Shield.1:	shielding	,	at=	831.3955	-corr+50	;
+T.40:		marker		,	at=	839.4016039	-corr+50	;
 
 endsequence ;
 

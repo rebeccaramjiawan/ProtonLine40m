@@ -306,8 +306,8 @@ t4=-0.0171710 ;
 ! and for Geode, where it is set in the centre of the Quadrupole (QDA.41910) upstream of the extraction point
 ! => for detailed view see CDD drawing spslnins0030-vAH
 
-corr:= 1.895499999955; 		!use for optics calculation and layout database
-!corr:=0;			!use for survey (Geode)
+!corr:= 1.895499999955; 		!use for optics calculation and layout database
+corr:=0;			!use for survey (Geode)
 
 merge:= -0.1;		!Position of focal point from start of hot plasma cell; range=-1 to 1.5
 !=========================

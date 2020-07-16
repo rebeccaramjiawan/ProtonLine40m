@@ -403,10 +403,10 @@ class Plot:
         ax.plot(survey['z'] - np.squeeze(np.multiply(1, xt, np.sin(theta))),
                 survey['x'] - np.squeeze(np.multiply(1, xt, np.cos(theta))), 'r-', linewidth=1.3)
 
-        ax.plot(survey['z'] + np.squeeze(np.multiply(1, xt, np.sin(theta))) - (0.001+(twiss['s'][twiss['name']=="plasma_merge:1"]-survey['s'])*0.0005) * np.sin(theta),
-                survey['x'] + np.squeeze(np.multiply(1, xt, np.cos(theta))) - (0.001 +(twiss['s'][twiss['name']=="plasma_merge:1"]-survey['s'])*0.0005) *np.cos(theta), 'c-', linewidth=1.3)
-        ax.plot(survey['z'] - np.squeeze(np.multiply(1, xt, np.sin(theta))) + (0.001+(twiss['s'][twiss['name']=="plasma_merge:1"]-survey['s'])*0.0005) *np.sin(theta),
-                survey['x'] - np.squeeze(np.multiply(1, xt, np.cos(theta))) + (0.001 +(twiss['s'][twiss['name']=="plasma_merge:1"]-survey['s'])*0.0005) *np.cos(theta), 'c-', linewidth=1.3)
+        # ax.plot(survey['z'] + np.squeeze(np.multiply(1, xt, np.sin(theta))) - (0.001+(twiss['s'][twiss['name']=="plasma_merge:1"]-survey['s'])*0.0005) * np.sin(theta),
+        #         survey['x'] + np.squeeze(np.multiply(1, xt, np.cos(theta))) - (0.001 +(twiss['s'][twiss['name']=="plasma_merge:1"]-survey['s'])*0.0005) *np.cos(theta), 'c-', linewidth=1.3)
+        # ax.plot(survey['z'] - np.squeeze(np.multiply(1, xt, np.sin(theta))) + (0.001+(twiss['s'][twiss['name']=="plasma_merge:1"]-survey['s'])*0.0005) *np.sin(theta),
+        #         survey['x'] - np.squeeze(np.multiply(1, xt, np.cos(theta))) + (0.001 +(twiss['s'][twiss['name']=="plasma_merge:1"]-survey['s'])*0.0005) *np.cos(theta), 'c-', linewidth=1.3)
         # ax.plot(survey['z'] + np.squeeze(np.multiply(6, yt, np.sin(theta))),
         #         survey['x'] + np.squeeze(np.multiply(6, yt, np.cos(theta))), 'b-', linewidth=1)
         # ax.plot(survey['z'] - np.squeeze(np.multiply(6, yt, np.sin(theta))),
@@ -461,72 +461,72 @@ class Plot:
                         -survey['l'][idx],
                         angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='m',
                         edgecolor='m'))
-            elif twiss['keyword'][idx] == 'quadrupole':
-                _ = ax.add_patch(
-                    matplotlib.patches.Rectangle(
-                        (
-                        survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2),
-                        survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2)), 0.5,
-                        -survey['l'][idx],
-                        angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='g',
-                        edgecolor='g'))
-            elif twiss['keyword'][idx] == 'rbend':
-                _ = ax.add_patch(
-                    matplotlib.patches.Rectangle(
-                        (
-                        survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2),
-                        survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2)), 0.5,
-                        -survey['l'][idx],
-                        angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='c',
-                        edgecolor='c'))
-            elif twiss['keyword'][idx] == 'vkicker':
-                _ = ax.add_patch(
-                    matplotlib.patches.Rectangle(
-                        (
-                        survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2),
-                        survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2)), 0.5,
-                        -survey['l'][idx],
-                        angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='b',
-                        edgecolor='b'))
-            elif twiss['keyword'][idx] == 'hkicker':
-                _ = ax.add_patch(
-                    matplotlib.patches.Rectangle(
-                        (
-                        survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2),
-                        survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2)), 0.5,
-                        -survey['l'][idx],
-                        angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='b',
-                        edgecolor='b'))
-            elif 'monitor' in twiss['keyword'][idx]:
-                _ = ax.add_patch(
-                    matplotlib.patches.Rectangle(
-                        (
-                        survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2),
-                        survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2)), 0.5,
-                        -survey['l'][idx],
-                        angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='r',
-                        edgecolor='r'))
-            elif twiss['keyword'][idx] == 'instrument':
-                _ = ax.add_patch(
-                    matplotlib.patches.Rectangle(
-                        (
-                        survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2),
-                        survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
-                            (theta[idx] + theta[idx - 1]) / 2)), 0.5,
-                        -survey['l'][idx],
-                        angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='r',
-                        edgecolor='r'))
+            # elif twiss['keyword'][idx] == 'quadrupole':
+            #     _ = ax.add_patch(
+            #         matplotlib.patches.Rectangle(
+            #             (
+            #             survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2),
+            #             survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2)), 0.5,
+            #             -survey['l'][idx],
+            #             angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='g',
+            #             edgecolor='g'))
+            # elif twiss['keyword'][idx] == 'rbend':
+            #     _ = ax.add_patch(
+            #         matplotlib.patches.Rectangle(
+            #             (
+            #             survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2),
+            #             survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2)), 0.5,
+            #             -survey['l'][idx],
+            #             angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='c',
+            #             edgecolor='c'))
+            # elif twiss['keyword'][idx] == 'vkicker':
+            #     _ = ax.add_patch(
+            #         matplotlib.patches.Rectangle(
+            #             (
+            #             survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2),
+            #             survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2)), 0.5,
+            #             -survey['l'][idx],
+            #             angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='b',
+            #             edgecolor='b'))
+            # elif twiss['keyword'][idx] == 'hkicker':
+            #     _ = ax.add_patch(
+            #         matplotlib.patches.Rectangle(
+            #             (
+            #             survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2),
+            #             survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2)), 0.5,
+            #             -survey['l'][idx],
+            #             angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='b',
+            #             edgecolor='b'))
+            # elif 'monitor' in twiss['keyword'][idx]:
+            #     _ = ax.add_patch(
+            #         matplotlib.patches.Rectangle(
+            #             (
+            #             survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2),
+            #             survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2)), 0.5,
+            #             -survey['l'][idx],
+            #             angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='r',
+            #             edgecolor='r'))
+            # elif twiss['keyword'][idx] == 'instrument':
+            #     _ = ax.add_patch(
+            #         matplotlib.patches.Rectangle(
+            #             (
+            #             survey['z'][idx] - survey['l'][idx] * np.cos((theta[idx] + theta[idx - 1]) / 2) + 0.25 * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2),
+            #             survey['x'][idx] - 0.5 * np.cos((theta[idx] + theta[idx - 1]) / 2) - survey['l'][idx] * np.sin(
+            #                 (theta[idx] + theta[idx - 1]) / 2)), 0.5,
+            #             -survey['l'][idx],
+            #             angle=(np.pi / 2 + (theta[idx] + theta[idx - 1]) / 2) * 180 / np.pi, facecolor='r',
+            #             edgecolor='r'))
 
         self.plot_secant((survey['z'][twiss['name'][:] == "plasma.e:1"], survey['x'][twiss['name'][:] == "plasma.e:1"]),
                          (survey['z'][twiss['name'][:] == "table.1:1"], survey['x'][twiss['name'][:] == "table.1:1"]),
@@ -592,45 +592,41 @@ class Plot:
 
         for ii in range(no_seeds):
             self.madx.input("ii =" + str(ii) + ";")
+            print("ii =" + str(ii) + ";")
             self.madx.call(file='add_errors.madx')
             twiss = self.madx.twiss(BETX=27.931086, ALFX=0.650549, DX=-0.557259, DPX=0.013567,
                                     BETY=120.056512, ALFY=-2.705071, DY=0.0, DPY=0.0,
-                                    x=0.00, px=0.00, y=0.0, py=0.0, file="twiss_error.out")
+                                    x=0.00, px=0.00, y=0.0, py=0.0)
 
             x1_off = twiss['x'][twiss['name'][:] == 'bpm.412352:1']
             x2_off = twiss['x'][twiss['name'][:] == 'bpm.412425:1']
-
+            x1_off_all = np.append(x1_off_all, np.multiply(x1_off, 1e6))   # um
+            x2_off_all = np.append(x2_off_all, np.multiply(x2_off, 1e6))   # um
+            x_pl_off = twiss['x'][twiss['name'][:] == 'plasma_merge:1']
+            x_pl_off_all = np.append(x_pl_off_all, np.multiply(x_pl_off, 1e6))   # um
 
             separation = twiss['s'][twiss['name'][:] == 'bpm.412352:1'] - twiss['s'][twiss['name'][:] == 'bpm.412425:1']
-            x_angle_off = np.multiply(np.arctan((x2_off - x1_off) / separation), 1e6)
-
-            x1_off_all = np.append(x1_off_all, np.multiply(x1_off, 1e6))
-            x2_off_all = np.append(x2_off_all, np.multiply(x2_off, 1e6))
-            x_pl_off = twiss['x'][twiss['name'][:] == 'plasma_merge:1']
-            x_pl_off_all = np.append(x_pl_off_all, np.multiply(x_pl_off, 1e6))
-            x_angle_off_all = np.append(x_angle_off_all, np.multiply(np.arctan((x2_off - x1_off) / separation), 1e6))
+            x_angle_off_all = np.append(x_angle_off_all, np.multiply(np.arctan((x2_off - x1_off) / separation), 1e6))  # um
 
             y1_off = twiss['y'][twiss['name'][:] == 'bpm.412352:1']
             y2_off = twiss['y'][twiss['name'][:] == 'bpm.412425:1']
-            y_angle_off = np.multiply(np.arctan((y2_off - y1_off) / separation), 1e6)
-
             y1_off_all = np.append(y1_off_all, np.multiply(y1_off, 1e6))
             y2_off_all = np.append(y2_off_all, np.multiply(y2_off, 1e6))
             y_angle_off_all = np.append(y_angle_off_all, np.multiply(np.arctan((y2_off - y1_off) / separation), 1e6))
             y_pl_off = twiss['y'][twiss['name'][:] == 'plasma_merge:1']
             y_pl_off_all = np.append(y_pl_off_all, np.multiply(y_pl_off, 1e6))
+
             self.madx.input(
-                "CORRECT, flag = line, PLANE = x, MODE = svd, COND = 0, MONON = 1, MONERROR = 1, MONSCALE = 0, RESOUT = 0, ERROR = 1.E-5, CORRLIM = 10.0, clist = 'corr_x_valuesGlobal.tfs';")
+                "CORRECT, flag = line, PLANE = x, MODE = LSQ, COND = 0, MONON = 1, MONERROR = 1, MONSCALE = 0, RESOUT = 0, ERROR = 1.E-5, CORRLIM = 10.0, clist = 'corr_x_valuesGlobal.tfs';")
             self.madx.input(
-                "CORRECT, flag = line, PLANE = y, MODE = svd, COND = 0, MONON = 1, MONERROR = 1, MONSCALE = 0, RESOUT = 0, ERROR = 1.E-5, CORRLIM = 10.0, clist = 'corr_y_valuesGlobal.tfs';")
+                "CORRECT, flag = line, PLANE = y, MODE = LSQ, COND = 0, MONON = 1, MONERROR = 1, MONSCALE = 0, RESOUT = 0, ERROR = 1.E-5, CORRLIM = 10.0, clist = 'corr_y_valuesGlobal.tfs';")
 
             twiss = self.madx.twiss(BETX=27.931086, ALFX=0.650549, DX=-0.557259, DPX=0.013567,
                                     BETY=120.056512, ALFY=-2.705071, DY=0.0, DPY=0.0,
-                                    x=0.00, px=0.00, y=0.0, py=0.0, file="twiss_error.out")
+                                    x=0.00, px=0.00, y=0.0, py=0.0)
+
             x1_corr = twiss['x'][twiss['name'][:] == 'bpm.412352:1']
             x2_corr = twiss['x'][twiss['name'][:] == 'bpm.412425:1']
-            x_angle_corr = np.multiply(np.arctan((x2_corr - x1_corr) / separation), 1e6)
-
             x1_corr_all = np.append(x1_corr_all, np.multiply(x1_corr, 1e6))
             x2_corr_all = np.append(x2_corr_all, np.multiply(x2_corr, 1e6))
             x_pl_corr = twiss['x'][twiss['name'][:] == 'plasma_merge:1']
@@ -642,7 +638,6 @@ class Plot:
             y2_corr = twiss['y'][twiss['name'][:] == 'bpm.412425:1']
             y_pl_corr = twiss['y'][twiss['name'][:] == 'plasma_merge:1']
             y_pl_corr_all = np.append(y_pl_corr_all, np.multiply(y_pl_corr, 1e6))
-            y_angle_corr = np.multiply(np.arctan((y2_corr - y1_corr) / separation), 1e6)
 
             y1_corr_all = np.append(y1_corr_all, np.multiply(y1_corr, 1e6))
             y2_corr_all = np.append(y2_corr_all, np.multiply(y2_corr, 1e6))
@@ -657,8 +652,6 @@ class Plot:
             x2_corr_err = twiss['x'][twiss['name'][:] == 'bpm.412425:1']
             x_pl_corr_err = twiss['x'][twiss['name'][:] == 'plasma_merge:1']
             x_pl_corr_err_all = np.append(x_pl_corr_err_all, np.multiply(x_pl_corr_err, 1e6))
-            x_angle_corr_err = np.multiply(np.arctan((x2_corr_err - x1_corr_err) / separation), 1e6)
-
             x1_corr_err_all = np.append(x1_corr_err_all, np.multiply(x1_corr_err, 1e6))
             x2_corr_err_all = np.append(x2_corr_err_all, np.multiply(x2_corr_err, 1e6))
             x_angle_corr_err_all = np.append(x_angle_corr_err_all,
